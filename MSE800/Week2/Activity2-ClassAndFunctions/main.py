@@ -1,46 +1,56 @@
-##Develop a project using one class and a minimum of two functions that can collect the name, age, and student ID for at least three students.
-##After collecting the data, print out a list of student names and ages in order.
+# Global variable to store student objects
+student_list = []
 
-#Global variable
-students = []
 
- #student class
-class Student: 
-    def set_data(self, name, age, studentId):
+# Class definition (without __init__)
+class Student:
+
+    # Function to set student data
+    def set_data(self, name, age, student_id):
         self.name = name
         self.age = age
-        self.studentId = studentId
+        self.student_id = student_id
+
+    # Function to display student info
+    def display_info(self):
+        return f"Name: {self.name}, Age: {self.age}"
 
 
-#Collect Student Data
-def student_collection():
+# Function to collect student data
+def collect_students():
+    print("Enter details for at least 3 students:\n")
 
-    #collect atleast 3 students data
     for i in range(3):
-        print(f"Enter Student {i+1} Details ")
-        #local variables
-        name = input("Enter Name: ")
-        age = input("Enter Age: ")
-        studentId = input("Enter Student ID: ")
+        print(f"Student {i+1}")
+
+        # Local variables
+        name = input("Enter student name: ")
+        age = int(input("Enter student age: "))
+        student_id = input("Enter student ID: ")
 
         student = Student()
-        student.set_data(name, age, studentId)
-        students.append(student)
+
+        # Set data using class function
+        student.set_data(name, age, student_id)
+
+        # Add student to global list
+        student_list.append(student)
 
         print()
 
-#display students sorted by age
-def display_sorted_students():
-    print("Students List (Name and Age) \n")
-    sorted_student_list = sorted(students, key=lambda s: s.age)
-    for student in sorted_student_list:
-        print(f"{student.name} - {student.age}")
 
+# Function to display students in order
+def display_students():
+    print("\nList of Students (Names and Ages):")
+
+    # Sort students by name
+    sorted_students = sorted(student_list, key=lambda s: s.name)
+
+    for student in sorted_students:
+        print(student.display_info())
+
+
+# Standard Python entry point as main function
 if __name__ == "__main__":
-    student_collection()
-    display_sorted_students()
-
-
-
-
-    
+    collect_students()
+    display_students()
