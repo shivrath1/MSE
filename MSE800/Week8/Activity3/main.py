@@ -30,17 +30,21 @@ class DomesticFlight(Flight):
         print("Gate Number:", self.gate_number)
 
 
-# DomesticFlight object
-domestic_flight = DomesticFlight(
-    "NZ109",
-    "Auckland",
-    "Chirstchurch",
-    "A12"
-)
+def main():
+    # DomesticFlight object
+    domestic_flight = DomesticFlight(
+        "NZ109",
+        "Auckland",
+        "Chirstchurch",
+        "A12"
+    )
 
-# inherited methods
-domestic_flight.display_flight()
-domestic_flight.check_status()
+    # inherited methods
+    domestic_flight.display_flight()
+    domestic_flight.check_status()
 
-# child class method to dispalys the gate number
-domestic_flight.display_gate()
+    # child class method to dispalys the gate number
+    domestic_flight.display_gate()
+
+if __name__ == "__main__":
+    main()
